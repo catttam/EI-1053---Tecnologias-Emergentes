@@ -29,10 +29,10 @@ app.use(control.middleware) //Done
 
 //etc ...
 
-app.get('/user/:client_id', control.getUser)
-app.post('/user/client', control.createUser)
-app.post('/user/client/update/:client_id', control.updateUser)
-app.delete('/user/client/delete/:client_id', control.deleteUser)
+app.get('/user/:client_id', control.getClient)
+app.post('/user/client', control.createClient)
+app.post('/user/client/update/:client_id', control.updateClient)
+app.delete('/user/client/delete/:client_id', control.deleteClient)
 
 const PORT = 8000
 app.listen(PORT, _ => console.log(`Servidor web escuchando en puerto ${PORT}`))
