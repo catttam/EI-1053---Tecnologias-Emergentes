@@ -28,11 +28,19 @@ app.use(control.middleware) //Done
 //app.get('/blog/search', control.searchBlog ) //Done
 
 //etc ...
-
+//---------------CLIENTS------------------------
 app.get('/user/:client_id', control.getClient)
 app.post('/user/client', control.createClient)
 app.post('/user/client/update/:client_id', control.updateClient)
 app.delete('/user/client/delete/:client_id', control.deleteClient)
+
+
+//---------------ARTIST------------------------
+app.get('/user/artist', control.createArtist)
+app.post('/user/:artist_id', control.getArtist)
+app.post('/user/artist/update/:artist_id', control.updateArtist)
+app.delete('/user/client/delete/:artist_id', control.deleteArtist)
+
 
 const PORT = 8000
 app.listen(PORT, _ => console.log(`Servidor web escuchando en puerto ${PORT}`))
