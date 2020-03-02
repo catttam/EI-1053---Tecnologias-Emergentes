@@ -1,45 +1,122 @@
+var _ = require('lodash');
 
 //User   {id: Number, name: String , passwd: String}
 //Blog   {id: Number, name: String , creatorID: Number}
 //Post   {id: Number, text: String,  authorID: Number}
 //Posts  {'blogID':{'postID1': .., 'postID2': ...}}
 
-let Users = {}
-let Blogs = {}
-let Posts = {}
+let clients = {}
+let artists = {}
+let suscriptions = {}
+let sheets = {}
+let merch =  {}
+
 
 //Most of the methods will be asynch when using a true DB
 
-exports.createUser = data => { 
-    //check if data is valid
-	if (!data.id || !data.name || !data.passwd)
+//----------- CLIENTS --------------
+
+// TODO Cambiar a nuestro JSON y añadir seguridad
+exports.createClient = data => { 
+	//check if data is valid
+	let matches = Object.keys(clients).some(id => clients[id].name == data.name)
+
+	if (!data.id || !data.name || !data.passwd || matches)
 		return 'KO'
-	
-    if (Users[data.id])
-	    Users[data.id] = Object.assign(Users[data.id], data)
 	else
-		Users[data.id] = data
+		clients[data.id] = data
 	
 	return 'OK'
 
 }
 
-exports.getUsers = () => Object.keys(Users).map(k => ({id: Users[k].id, name: Users[k].name}) )
+exports.updateClientData = data => {
+
+	if (clientes[data.id]){
+		clients[data.id] = Object.assign(clients[data.id], data)
+		return 'OK'
+	}
+
+	return 'KO'
+}
 							  
-exports.getUserData = id => Users[id] || null
+exports.getClientData = id => clients[id] || null
 
-exports.createBlog = data => {
-	 //check if data is valid
-	if (!data.id || !data.name || !data.creatorID)
+exports.removeClient = (clientId) => {
+	if(delete clients[clientId]) return 'OK'
+	return 'KO'
+}
+
+//----------- ARTISTS --------------
+
+exports.insertArtist = data => { 
+	//check if data is valid
+	let matches = Object.keys(artists).some(id => artists[id].name == data.name)
+	if (!data.id || !data.name || !data.passwd || matches )
 		return 'KO'
 	
-    if (Blogs[data.id])
-	    Blogs[data.id] = Object.assign(Blogs[data.id], data)
 	else
-		Blogs[data.id] = data
+		artists[data.id] = data
 	
 	return 'OK'
+
 }
+
+exports.updateArtistData = data => {
+	
+	if (artists[data.id]){
+		artists[data.id] = Object.assign(artists[data.id], data)
+		return 'OK'
+	}
+
+	return 'KO'
+}
+exports.getArtist = id => artists[id] || null;
+
+exports.getArtistByUserName = (username) => Object.keys(artists).filter(id => artists[id].name.includes(username))
+
+exports.getAllArtists = () => Object.keys(artists).map(k => ({id: artists[k].id, name: artists[k].name}) )
+
+exports.removeArtist = (artistId) => {
+	if(delete artists[artistId]) return 'OK'
+	return 'KO'
+}
+
+
+//----------- SHEETS --------------
+
+exports.insertSheet = data => { 
+	//check if data is valid
+	if (!data.id || !data.name || !data.author || !data.file)
+		return 'KO'
+	else
+		sheets[data.id] = data
+	
+	return 'OK'
+
+}
+
+exports.updateSheetData = data => {
+	if (sheets[data.id]){
+		sheets[data.id] = Object.assign(sheets[data.id], data)
+		return 'OK'
+	}
+	return 'KO'
+}
+
+exports.getSheet = id => sheets[id] || null;
+
+exports.getSheetBy = (username) => Object.keys(artists).filter(id => artists[id].name.includes(username))
+
+exports.getSheetByQuery = (query) => _.filter(sheets, query)
+
+exports.getAllSheets = () => Object.keys(sheets).map(k => ({id: artists[k].id, name: artists[k].name}) )
+
+exports.removeSheet = (sheetId) => {
+	if(delete sheets[sheetId]) return 'OK'
+	return 'KO'
+}
+
 
 //exports.updateBlog = (blogId, data) =>  {}
 
@@ -57,4 +134,4 @@ exports.removePost = (blogId, postId) => {}
 
 exports.searchPosts = (blogId, text) => {}
 
-exports.getPostData = (blogId, postId) => Blog[blogId] ? (Blog[blogID].postID || null) : null 
+exports.getPostData = (blogId, postId) => Blog[blogId] ? (Blog[blogId].postId || null) : null 
