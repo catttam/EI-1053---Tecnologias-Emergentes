@@ -66,7 +66,7 @@ app.get('/merch/:artist_id', control.getMerchOfArtist)
 app.post('/merch/:artist_id', control.createMerchOfArtist)
 app.post('/merch/update/:artist_id/:merch_id', control.updateMerch)
 app.delete('/merch/delete/:artist_id/:', control.deleteSubscription)
-app.get('/mearch/search', control.merchSearch)
+app.get('/merch/search', control.merchSearch)
 
 const PORT = 8000
 app.listen(PORT, _ => console.log(`Servidor web escuchando en puerto ${PORT}`))
