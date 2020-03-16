@@ -46,7 +46,7 @@ exports.removeClient = (clientId) => {
 	if(delete clients[clientId]) return 'OK'
 	return 'KO'
 }
-
+/*
 //----------- ARTISTS --------------
 
 exports.insertArtist = data => { 
@@ -167,4 +167,4 @@ exports.removePost = (blogId, postId) => {}
 
 exports.searchPosts = (blogId, text) => {}
 
-exports.getPostData = (blogId, postId) => Blog[blogId] ? (Blog[blogId].postId || null) : null 
+exports.getPostData = (blogId, postId) => Blog[blogId] ? (Blog[blogId].postId || null) : null */
