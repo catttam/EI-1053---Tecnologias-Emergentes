@@ -44,13 +44,29 @@ app.get('/user/artist/all', control.getAllArtists)
 app.get('/user/artist/search', control.searchArtist)
 
 
-//---------------SHIT------------------------
+//---------------SHEET------------------------
 app.post('/sheet/:sheet_id', control.getSheet)
 app.get('/sheet/new', control.createNew)
 app.post('/sheet/update/:sheet_id', control.updateSheet)
 app.delete('/sheet/delete/:sheet_id', control.deleteSheet)
 app.get('/sheet/all', control.getAllSheet)
 app.get('/sheet/search', control.searchSheet)
+
+//---------------SUBSCRIPTIONS------------------------
+
+app.get('/subs/:artist_id', control.getSubscriptionsToArtist)
+app.post('/subs/new/:subs_id', control.createNewSubscription)
+app.post('/subs/update/:subs_id', control.updateSubscription)
+app.delete('/subs/delete/:subs_id', control.deleteSubscription)
+app.get('/subs/:client_id', control.getMySubscriptions)
+
+//---------------MERCHANDISING------------------------
+
+app.get('/merch/:artist_id', control.getMerchOfArtist)
+app.post('/merch/:artist_id', control.createMerchOfArtist)
+app.post('/merch/update/:artist_id/:merch_id', control.updateMerch)
+app.delete('/merch/delete/:artist_id/:', control.deleteSubscription)
+app.get('/merch/search', control.merchSearch)
 
 const PORT = 8000
 app.listen(PORT, _ => console.log(`Servidor web escuchando en puerto ${PORT}`))
