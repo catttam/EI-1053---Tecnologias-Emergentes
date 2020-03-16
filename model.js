@@ -120,9 +120,7 @@ exports.removeSheet = (sheetId) => {
 
 //----------- SUSCRIPTIONS --------------
 
-exports.getSubscriptionsToArtist = (artistId) => Object.keys(subscriptions)
-													   .filter(id =>subscriptions[id].artId.includes(artistId))
-
+exports.getSubscriptionsToArtist = (artistId) => Object.keys(subscriptions).filter(id =>subscriptions[id].artId.includes(artistId))
 
 // dudoso metodo
 exports.getSubscriptionsFromClient = (clientId) => clients[clientId].subscriptions
