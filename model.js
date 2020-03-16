@@ -7,7 +7,7 @@ var _ = require('lodash');
 
 let clients = {}
 let artists = {}
-let suscriptions = {}
+let subscriptions = {}
 let sheets = {}
 let merch =  {}
 
@@ -106,7 +106,8 @@ exports.updateSheetData = data => {
 
 exports.getSheet = id => sheets[id] || null;
 
-exports.getSheetBy = (username) => Object.keys(artists).filter(id => artists[id].name.includes(username))
+exports.getSheetBy = (username) => Object.keys(artists)
+										 .filter(id => artists[id].name.includes(username))
 
 exports.getSheetByQuery = (query) => _.filter(sheets, query)
 
@@ -117,6 +118,38 @@ exports.removeSheet = (sheetId) => {
 	return 'KO'
 }
 
+//----------- SUSCRIPTIONS --------------
+
+exports.getSubscriptionsToArtist = (artistId) => Object.keys(subscriptions)
+													   .filter(id =>subscriptions[id].artId.includes(artistId))
+
+
+// dudoso metodo
+exports.getSubscriptionsFromClient = (clientId) => clients[clientId].subscriptions
+
+exports.createSubscription = data => { 
+	//check if data is valid
+	if (!data.id || !data.artId)
+		return 'KO'
+	else
+		subscriptions[data.id] = data
+
+	return 'OK'
+
+}
+
+exports.updateSubscription = data => {
+	if (subscriptions[data.id]){
+		subscriptions[data.id] = Object.assign(subscriptions[data.id], data)
+		return 'OK'
+	}
+	return 'KO'
+}
+
+exports.removeSubscription = (subscriptionId) => {
+	if(delete sheets[sheetId]) return 'OK'
+	return 'KO'
+}
 
 //exports.updateBlog = (blogId, data) =>  {}
 
