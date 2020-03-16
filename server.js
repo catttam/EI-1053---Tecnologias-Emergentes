@@ -10,9 +10,9 @@ app.use(bodyparser.json())
 
 app.use(control.middleware) //Done
 
-//app.use('/web', express.static('public'))
+app.use('/web', express.static('public'))
 
-//app.get('/news', control.eventStream) //Stream of Server-side events
+app.get('/news', control.eventStream) //Stream of Server-side events
 
 
 //app.get('/user/:id', control.getUserData ) //Done
