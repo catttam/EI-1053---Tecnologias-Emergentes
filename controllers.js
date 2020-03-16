@@ -1,4 +1,4 @@
-const M = require('./model')
+const model = require('./model')
 
 const SSE = require('express-sse') //Server-side events
 
@@ -30,7 +30,7 @@ exports.eventStream = (req, res) => {
   STREAM.init(req, res)
 
 }
-
+/*
 exports.getUsers    = async (req, res) => res.send({result: await M.getUsers()})
 
 exports.getUserData = async (req, res) => res.send({result: await M.getUserData(req.param.id)})
@@ -44,3 +44,11 @@ exports.createBlog  = async (req, res) => res.send({result: await M.createBlog(r
 exports.searchBlog  = async (req, res) => res.send({result: await M.searchBlog(re.query.q)})
 
 exports.getBlogData = async (req, res) => res.send({result: await M.getBlogData(req.param.id)})
+*/
+
+//		el de server												el de modelo
+exports.getClient	 =	async (req, res) => res.send({result: await model.getClientData(req.param.client_id)})
+exports.createClient =	async (req,res) => res.send({result: await model.createClient(req.body)})
+exports.updateClient =	async (req,res) => res.send({result: await model.updateClientData(req.body)})
+exports.deleteClient =	async (req,res) => res.send({result: await model.removeClient(req.param.client_id)})//DUDOSO
+

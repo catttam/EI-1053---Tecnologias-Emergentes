@@ -33,7 +33,7 @@ app.get('/user/:client_id', control.getClient)
 app.post('/user/client', control.createClient)
 app.post('/user/client/update/:client_id', control.updateClient)
 app.delete('/user/client/delete/:client_id', control.deleteClient)
-
+/*
 
 //---------------ARTIST------------------------
 app.get('/user/artist', control.createArtist)
@@ -67,7 +67,7 @@ app.post('/merch/:artist_id', control.createMerchOfArtist)
 app.post('/merch/update/:artist_id/:merch_id', control.updateMerch)
 app.delete('/merch/delete/:artist_id/:', control.deleteSubscription)
 app.get('/merch/search', control.merchSearch)
-
+*/
 const PORT = 8000
 app.listen(PORT, _ => console.log(`Servidor web escuchando en puerto ${PORT}`))
 
