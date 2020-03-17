@@ -25,7 +25,7 @@ exports.createClient = data => {
 		return 'KO'
 	else
 		clients[data.id] = data
-	
+		console.log('Info model::', clients[data.id])
 	return 'OK'
 
 }

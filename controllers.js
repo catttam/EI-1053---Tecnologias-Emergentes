@@ -47,8 +47,8 @@ exports.getBlogData = async (req, res) => res.send({result: await M.getBlogData(
 */
 
 //		el de server												el de modelo
-exports.getClient	 =	async (req, res) => res.send({result: await model.getClientData(req.param.client_id)})
+exports.getClient	 =	async (req, res) => res.send({result: await model.getClientData(req.params.client_id)})
 exports.createClient =	async (req,res) => res.send({result: await model.createClient(req.body)})
 exports.updateClient =	async (req,res) => res.send({result: await model.updateClientData(req.body)})
-exports.deleteClient =	async (req,res) => res.send({result: await model.removeClient(req.param.client_id)})//DUDOSO
+exports.deleteClient =	async (req,res) => res.send({result: await model.removeClient(req.params.client_id)})//DUDOSO
 
