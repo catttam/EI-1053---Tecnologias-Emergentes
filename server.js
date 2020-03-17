@@ -12,9 +12,6 @@ app.use(control.middleware) //Done
 
 app.use('/web', express.static('public'))
 
-app.get('/news', control.eventStream) //Stream of Server-side events
-
-
 //app.get('/user/:id', control.getUserData ) //Done
 
 //app.post('/user', control.updateUser ) //Done
@@ -29,6 +26,7 @@ app.get('/news', control.eventStream) //Stream of Server-side events
 
 //etc ...
 //---------------CLIENTS------------------------
+app.get('/spam', control.eventStream) // SSE
 app.get('/user/:client_id', control.getClient)
 app.post('/user/client', control.createClient)
 app.post('/user/client/update/:client_id', control.updateClient)

@@ -24,12 +24,16 @@ exports.middleware = (req, res, next) => {
 const STREAM = new SSE()
 
 exports.eventStream = (req, res) => {
-
   console.log('Nueva conexion SSE ...')
-
   STREAM.init(req, res)
-
 }
+
+exports.sendEventStream = () =>{
+	console.log('enviando datillos')
+	STREAM.send("Registrate no seas ratón")
+ 
+}
+
 /*
 exports.getUsers    = async (req, res) => res.send({result: await M.getUsers()})
 
@@ -47,6 +51,7 @@ exports.getBlogData = async (req, res) => res.send({result: await M.getBlogData(
 */
 
 //		el de server												el de modelo
+
 exports.getClient	 =	async (req, res) => res.send({result: await model.getClientData(req.params.client_id)})
 exports.createClient =	async (req,res) => res.send({result: await model.createClient(req.body)})
 exports.updateClient =	async (req,res) => res.send({result: await model.updateClientData(req.body)})
