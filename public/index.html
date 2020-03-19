@@ -28,81 +28,83 @@
   <body>
     <!-- Our application root element -->
     <div id="app">
+      
       <b-container>
-        <b-jumbotron header="BootstrapVue" lead="Bootstrap 4 Components for Vue.js 2">
-          <p>For more information visit our website</p>
-          <b-btn variant="primary" href="https://bootstrap-vue.js.org/">More Info</b-btn>
+        <b-jumbotron header="SINGS" lead="para tus proyectos musicales">
         </b-jumbotron>
-        
-        <b-form>
-        <b-form-group
-          description="Let us know your name."
-          label-for="name"
-          label="Enter your fucking username"
-        >
-          <b-form-input id="name" class="mt-3" v-model="name"></b-form-input>
-        </b-form-group>
+        <b-tabs content-class="mt-3">
+          <b-tab title="Registrate" active>
+            <b-form>
+            <b-form-group
+              description="Let us know your name."
+              label-for="name"
+              label="Escribe tu nombre"
+            >
+              <b-form-input id="name" class="mt-3" v-model="name"></b-form-input>
+            </b-form-group>
 
-        <b-form-group
-        description="Ponte una puta contraseña por tus muertos que no queremos que un hacker ruso nos viole"
-        label-for="password"
-        label="Enter your fucking contraseña"
-        >
-          <b-form-input id="passwd" type="password" class="mt-3" v-model="passwd"></b-form-input>
-        </b-form-group>
-        
-        <b-form-group
-        description="el puto gmail de los cojones"
-        label-for="email"
-        label="Enter your fucking outlook"
-        >
-          <b-form-input id="email" label="Email:" class="mt-3" v-model="email"></b-form-input>
-        </b-form-group>
-        
-        <b-form-group
-        description="Let us know tu edad para que te juzguemos"
-        label-for="birthday"
-        label="Enter your fucking cumple"
-        >
-          <b-form-datepicker id="birthday" label="Fecha de nacimiento:" class="mt-3" v-model="birthday"></b-form-datepicker>
-        </b-form-group>
-        
-        <b-form-group
-        description="un selfie"
-        label-for="profileImg"
-        label="Enter your fucking e"
-        >
-          <b-form-file label="Fotito:" class="mt-3"
-          id="profileImg"
-          v-model="profileImg"
-          :state="Boolean(profileImg)"
-          placeholder="Pick una fuckin imagen"
-          drop-placeholder="Drop file here..."
-        ></b-form-file>
-        </b-form-group>
+            <b-form-group
+            description="Write your password"
+            label-for="password"
+            label="Escribe tu contraseña"
+            >
+              <b-form-input id="passwd" type="password" class="mt-3" v-model="passwd"></b-form-input>
+            </b-form-group>
+            
+            <b-form-group
+            description="Write you email"
+            label-for="email"
+            label="Escribe tu correo"
+            >
+              <b-form-input id="email" label="Email:" class="mt-3" v-model="email"></b-form-input>
+            </b-form-group>
+            
+            <b-form-group
+            description="Let us know your age"
+            label-for="birthday"
+            label="Elige la fecha de tu cumpleaños"
+            >
+              <b-form-datepicker id="birthday" label="Fecha de nacimiento:" class="mt-3" v-model="birthday"></b-form-datepicker>
+            </b-form-group>
+            
+            <b-form-group
+            description="Profile picture"
+            label-for="profileImg"
+            label="Foto de perfil"
+            >
+              <b-form-file label="Fotito:" class="mt-3"
+              id="profileImg"
+              v-model="profileImg"
+              :state="Boolean(profileImg)"
+              placeholder="Elige una imagen"
+              drop-placeholder="Arrastra la foto aqui..."
+            ></b-form-file>
+            </b-form-group>
 
-        <b-button type="reset" class="mr-2" @click="createClient">dale envia</b-button>
-        <b-button type="reset" class="mr-2">Borrar</b-button>
+            <b-button type="reset" class="mr-2" @click="createClient">dale envia</b-button>
+            <b-button type="reset" class="mr-2">Borrar</b-button>
 
-      </b-form>
-
-      <b-form>
-        <b-form-group
-          description="Usuario a cotillear"
+          </b-form>
+        </b-tab>
+        <b-tab title="Datos de usuario">
+          <b-form>
+          <b-form-group
+          description="Usuario a obtener información"
           label-for="client_id"
-          label="Mete la id "
+          label="Mete el id del usuario"
         >
           <b-form-input id="client_id" class="mt-3" v-model="client_id"></b-form-input>
-        </b-form-group>
-        <b-button type="reset" class="mr-2" @click="getClient">Marujear</b-button>
-        <div>
-          <p v-if="alertClientNull">El cliente que buscas no existe palurdo</p>
-          <p v-else>{{client_data}}</p>
-        </div>
-      </b-form>
-
-
+          </b-form-group>
+          <b-button type="reset" class="mr-2" @click="getClient">Obtener datos</b-button>
+          <div>
+            <p v-if="alertClientNull">El cliente que buscas no existe</p>
+            <p v-else>{{client_data}}</p>
+          </div>
+        </b-form>
+      </b-tab>
+    </b-tabs>
       </b-container>
+
     </div>
 
     <!-- Start running your app -->
