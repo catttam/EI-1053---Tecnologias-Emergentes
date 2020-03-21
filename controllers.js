@@ -57,3 +57,9 @@ exports.createClient =	async (req,res) => res.send({result: await model.createCl
 exports.updateClient =	async (req,res) => res.send({result: await model.updateClientData(req.body)})
 exports.deleteClient =	async (req,res) => res.send({result: await model.removeClient(req.params.client_id)})//DUDOSO
 
+
+//SHEETS
+
+exports.getSheet	=	async (req,res) => res.send({result: await model.getSheet(req.params.sheet_id)})
+exports.createNew	=	async (req,res) => res.send({result: await model.insertSheet(req.body)})
+exports.getAllSheet =	async (req,res) => res.send({result: await model.getAllSheets()})
