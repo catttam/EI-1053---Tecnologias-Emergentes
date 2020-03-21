@@ -84,7 +84,7 @@ exports.removeArtist = (artistId) => {
 
 
 //----------- SHEETS --------------
-
+*/
 exports.insertSheet = data => { 
 	//check if data is valid
 	if (!data.id || !data.name || !data.author || !data.file)
@@ -96,6 +96,10 @@ exports.insertSheet = data => {
 
 }
 
+exports.getSheet = id => sheets[id] || null;
+
+exports.getAllSheets = () => Object.keys(sheets).map(k => ({id: artists[k].id, name: artists[k].name}) )
+/*
 exports.updateSheetData = data => {
 	if (sheets[data.id]){
 		sheets[data.id] = Object.assign(sheets[data.id], data)
@@ -104,14 +108,14 @@ exports.updateSheetData = data => {
 	return 'KO'
 }
 
-exports.getSheet = id => sheets[id] || null;
+
 
 exports.getSheetBy = (username) => Object.keys(artists)
 										 .filter(id => artists[id].name.includes(username))
 
 exports.getSheetByQuery = (query) => _.filter(sheets, query)
 
-exports.getAllSheets = () => Object.keys(sheets).map(k => ({id: artists[k].id, name: artists[k].name}) )
+
 
 exports.removeSheet = (sheetId) => {
 	if(delete sheets[sheetId]) return 'OK'

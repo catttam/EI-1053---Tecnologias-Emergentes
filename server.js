@@ -43,14 +43,14 @@ app.get('/user/artist/all', control.getAllArtists)
 app.get('/user/artist/search', control.searchArtist)
 
 
-//---------------SHEET------------------------
+//---------------SHEET------------------------*/
 app.post('/sheet/:sheet_id', control.getSheet)
 app.get('/sheet/new', control.createNew)
-app.post('/sheet/update/:sheet_id', control.updateSheet)
-app.delete('/sheet/delete/:sheet_id', control.deleteSheet)
+//app.post('/sheet/update/:sheet_id', control.updateSheet)
+//app.delete('/sheet/delete/:sheet_id', control.deleteSheet)
 app.get('/sheet/all', control.getAllSheet)
-app.get('/sheet/search', control.searchSheet)
-
+//app.get('/sheet/search', control.searchSheet)
+/*
 //---------------SUBSCRIPTIONS------------------------
 
 app.get('/subs/:artist_id', control.getSubscriptionsToArtist)
