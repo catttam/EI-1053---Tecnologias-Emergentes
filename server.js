@@ -31,6 +31,7 @@ app.get('/user/:client_id', control.getClient)
 app.post('/user/client', control.createClient)
 app.post('/user/client/update/:client_id', control.updateClient)
 app.delete('/user/client/delete/:client_id', control.deleteClient)
+
 /*
 
 //---------------ARTIST------------------------

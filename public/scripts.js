@@ -1,3 +1,5 @@
+Vue.use(VueMaterial.default)
+
 window.app  = new Vue({
     el: '#app',
     data: {
@@ -11,12 +13,27 @@ window.app  = new Vue({
       client_id: null,
       logged: false,
     },
+    created(){
+      var stream = new EventSource('/spam');
+
+     /*  console.log("Event source created")
+      stream.onmessage = function(event){
+        console.log('Hasta aquí hemos llegado')
+        console.log(event.data)
+        window.alert(event.data)
+      }; */
+        stream.addEventListener('logged', event => {
+        console.log('Hasta aquí hemos llegado')
+        console.log(event.data)
+        window.alert(event.data)
+      }, false); 
+    },
+
     computed:{
         alertClientNull(){
           return this.client_data
         }
     },
-  
     methods:{
       createClient(formData){
         console.log('create client function uwu');
@@ -49,17 +66,5 @@ window.app  = new Vue({
             this.client_data=j.result;
         });
       },
-
-      eventStream(){
-        var stream = new EventSource('/spam');
-        if(!this.logged){
-            stream.onmessage = function(e){
-                console.log('Hasta aquí hemos llegado')
-                console.log(e.data)
-                window.alert(e.data)
-            }
-
-        }
-      },
-    }
+    },
   });
