@@ -13,6 +13,7 @@ window.app  = new Vue({
       client_id: null,
       logged: false,
     },
+    
     created(){
       var stream = new EventSource('/spam');
 

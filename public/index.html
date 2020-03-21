@@ -34,10 +34,30 @@
   <body>
     <!-- Our application root element -->
     <div id="app">
-      
+      <div class="md-toolbar md-transparent md-absolute md-theme-default md-elevation-0"> 
+        <div class="md-toolbar-row">
+          <div class="md-toolbar-section-start">
+            <h3 class="md-title">SYNCS</h3>
+          </div>
+          <div class="md-toolbar-section-end">
+              <div class="md-tabs-navigation">
+                <button class="md-button-clean md-tab-nav-button md-simple md-theme-default">
+                  <div class="md-ripple">
+                    <div class="md-button-content">Usuario</div>
+                  </div>
+                </button>>
+                <button class="md-button md-tab-nav-button md-rose md-round md-theme-default">
+                  <div class="md-ripple">
+                    <div class="md-button-content">Register</div>
+                  </div>
+                </button>
+              </div>
+          </div>
+
+        </div>
+      </div>
       <b-container>
-        <b-jumbotron header="SINGS" lead="para tus proyectos musicales">
-        </b-jumbotron>
+        
         <b-tabs content-class="mt-3">
           <b-tab title="Registrate" active>
             <b-form>
@@ -124,8 +144,6 @@
     </b-tabs>
 
 
-
-    
       </b-container>
 
     </div>

@@ -37,6 +37,8 @@ exports.sendEventStream = () =>{
 	//STREAM.send("Registrate no seas ratón")
 }
 
+
+
 /*
 exports.getUsers    = async (req, res) => res.send({result: await M.getUsers()})
 
