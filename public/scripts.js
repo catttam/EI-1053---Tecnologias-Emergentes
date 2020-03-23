@@ -10,7 +10,7 @@ window.app  = new Vue({
       birthday: '',
       email: '',
       profileImg: [],
-      client_data:'Aun no hay datos',
+      client_data:[],
       client_id: null,
       logged: false,
 
@@ -47,16 +47,7 @@ window.app  = new Vue({
 
     },     
     
-    data() {
-      return {
-        fields: ['ID', 'USERNAME', 'EMAIL',"BIRTHDAY", "SUBSCRIPTIONS"],
-        items: [
-          { ID: this.client_data.id, USERNAME: this.client_data.name, 
-            EMAIL: this.client_data.mail, BIRTHDAY: this.client_data.birthday, 
-            SUBSCRIPTIONS: this.client_data.subscriptions.length},  
-        ]
-      }
-    },
+
 
     methods:{
       createClient(formData){
@@ -82,13 +73,14 @@ window.app  = new Vue({
         },
       getClient(){
         let url= '/user/' + this.client_id
+        let self = this
         console.log(url)
         fetch(url)  
         .then(function(r){
             return r.json()
         }).then(function(j){
             console.log(j.result)
-            this.client_data=j.result;
+            self.client_data.push(j.result);
         });
       },
       insertSheet(formData){

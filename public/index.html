@@ -48,15 +48,9 @@
                   
                   <label for="client_id" class="s-label">USER ID</label>
                   <b-form-input id="client_id" class="mt-2 s-round-input" v-model="client_id"></b-form-input>
-                  <template v-if="!client_id">
-                      <b-table
-                      :fields="fields"
-                      :items="items"
-                      >
-                      </b-table>
-                  </template>
-        
                   <b-button type="reset" pill class="s-button mt-4" @click="getClient">Get data</b-button>
+
+                  <h3>{{client_data}}</h3>
                 </b-form>
               </div>
               </md-tab>
