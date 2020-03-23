@@ -45,31 +45,23 @@
               <md-tab md-label="Users">
                 <div class="main-raised main">
                 <b-form class="container s-section">
-                  <b-form-group
-                  description="Usuario a obtener información"
-                  label-for="client_id"
-                  label="Mete el id del usuario"
-                >
+                  
+                  <label for="client_id" class="s-label">USER ID</label>
                   <b-form-input id="client_id" class="mt-2 s-round-input" v-model="client_id"></b-form-input>
-                  </b-form-group>
-                  <b-button type="reset" pill class="s-button mt-2" @click="getClient">Get data</b-button>
-                  <div>
-                    <p v-if="alertClientNull">El cliente que buscas no existe</p>
-                    <p v-else>{{client_data}}</p>
-                  </div>
+        
+                  <b-button type="reset" pill class="s-button mt-4" @click="getClient">Get data</b-button>
                 </b-form>
               </div>
               </md-tab>
-              <md-tab md-label="Register" >
+              <md-tab md-label="Register">
                 <div class="main-raised main">
-           
                   <b-form class="container s-section">  
                    
                     <label for="name" class="s-label">USERNAME</label>
                     <b-form-input id="name" class="mt-2 s-round-input" v-model="name"></b-form-input>
 
                     <label for="password" class="s-label">PASSWORD</label>
-                    <b-form-input id="passwd" class="mt-2 s-round-input" type="password" v-model="passwd"></b-form-input>
+                    <b-form-input id="passwd" class="mt-2 s-round-input" v-model="passwd"></b-form-input>
 
                     <label for="email" class="s-label">E-MAIL</label>
                     <b-form-input id="email" class="mt-2 s-round-input" v-model="email"></b-form-input>
@@ -81,9 +73,76 @@
                     <b-form-file id="profileImg" class="mt-2" v-model="profileImg" size="sm"></b-form-file>
       
 <!--                   <md-button type="reset" class="md-primary md-round " @click="createClient">Send</md-button>
- -->                  <b-button type="reset" pill class="s-button mt-2" @click="createClient">Send</b-button>
+ -->                  <b-button type="reset" pill class="s-button mt-4" @click="createClient">Send</b-button>
 
-      
+                </b-form>
+                </div>
+              </md-tab>
+              <md-tab md-label="Sheets" >
+                <div class="main-raised main">
+           
+                  <b-form class="container s-section">  
+                   
+                    <label for="sheetName" class="s-label">SHEET NAME</label>
+                    <b-form-input id="sheetName" class="mt-2 s-round-input" v-model="sheetName"></b-form-input>
+
+                    <label for="sheetAuthor" class="s-label">SHEET AUTHOR</label>
+                    <b-form-input id="sheetAuthor" class="mt-2 s-round-input" v-model="sheetAuthor"></b-form-input>
+
+                    <label for="sheetSource" class="s-label">USERNAME</label>
+                    <b-form-input id="sheetSource" class="mt-2 s-round-input" v-model="sheetSource"></b-form-input>
+
+                    <label for="sheet" class="s-label">SHEET FILE</label>
+                    <b-form-file id="sheet" class="mt-2" v-model="sheet" size="sm"></b-form-file>
+                    
+                    <label class="s-label mt-3">INSTRUMENTS</label>
+                    <div class="mt-2">
+                      <b-row class="justify-content-md-center">
+  
+                        <b-col sm="3">
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Piano">Piano</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Guitarra">Guitarra</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Violonchelo">Violonchelo</md-checkbox></b-row>
+                        </b-col>
+                        <b-col sm="3">
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Xilofono">Xilofono</md-checkbox></b-row>                          
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Bandurria">Bandurria</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Bajo">Bajo</md-checkbox></b-row>
+                        </b-col>
+                        <b-col sm="3">
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Flauta">Flauta</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Bombardino">Bombardino</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Trompeta">Trompeta</md-checkbox></b-row>
+                        </b-col>
+                      </b-row>
+                      
+                    </div>
+
+                    <label class="s-label mt-3">GENRES</label>
+                    <div class="mt-2">
+                      <b-row class="justify-content-md-center">
+                        <b-col sm="3">
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Rock">Rock</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Classic">Classic</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="R&B">R&B</md-checkbox></b-row>
+                        </b-col>
+                        <b-col sm="3">
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Pop">Pop</md-checkbox></b-row>                          
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Metal">Metal</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Jazz">Jazz</md-checkbox></b-row>
+                        </b-col>
+                        <b-col sm="3">
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Country">Country</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="House">House</md-checkbox></b-row>
+                          <b-row><md-checkbox v-model="genres" class="my-2" value="Reggae">Reggae</md-checkbox></b-row>
+                        </b-col>
+                      </b-row>
+                    </div>
+                    
+                    <md-switch v-model="public" class="mt-3">Your sheet is public, switch to make private</md-switch><br>
+<!--                   <md-button type="reset" class="md-primary md-round " @click="createClient">Send</md-button>
+ -->                  <b-button type="submit" pill class="s-button mt-3" @click="insertSheet">Send</b-button>
+
                 </b-form>
                 </div>
               </md-tab>
@@ -92,10 +151,14 @@
                 </div>
               </md-tab>
             </md-tabs>
+            <div class="badge">
+            <!--   <i class="far fa-bell"></i> -->
+              <p style="margin:auto;">{{newSheet}}</p>
+            </div>
           </div>
         </div>
+      </div>
     </div>
-
     </div>
   
     <!-- Start running your app -->

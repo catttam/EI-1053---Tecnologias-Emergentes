@@ -2,6 +2,10 @@
 body, button{
     font-family: Roboto;
     font-weight: 300;
+    font-size: 12px;
+}
+p{
+    font-size: 10.5px;
 }
 
 input{
@@ -9,8 +13,7 @@ input{
     font-weight: 400;
 }
 
-:root{
-   
+:root{ 
     --md-theme-default-primary: rgba(136, 176, 75, 0.5) !important;
     --md-theme-default-accent: rgba(117, 117, 117, 0.822) !important;
     --md-primary:rgba(136, 176, 75, 0.5) !important;
@@ -31,10 +34,28 @@ input{
 .md-tabs.md-theme-default .md-tabs-navigation .md-button-content {
     color: #E3F2FD !important;
  }
+
 .md-theme-default :not(input):not(textarea)::selection{
-    color: #442C2E !important;
-    color: var(--md-theme-default-text-primary-on-accent, #442C2E) !important;
+    background-color: rgba(117, 117, 117, 0.055);
+    background-color: var(--md-theme-default-accent-on-background, rgba(117, 117, 117, 0.055));
+    color: rgba(117, 117, 117, 0.055) !important;
+    color: var(--md-theme-default-text-primary-on-accent, rgba(117, 117, 117, 0.055)) !important;
 }
+
+.md-switch.md-theme-default.md-checked .md-switch-container{
+    background-color: rgba(136, 176, 75, 0.7);
+    background-color: var(--md-theme-default-accent-on-background, rgba(136, 176, 75, 0.7));
+    color: rgba(136, 176, 75, 0.7) !important;
+    color: var(--md-theme-default-text-primary-on-accent, rgba(136, 176, 75, 0.7)) !important;
+}
+
+.md-switch.md-theme-default .md-switch-thumb{
+    background-color: rgba(117, 117, 117, 1);
+    background-color: var(--md-theme-default-accent-on-background, rgba(117, 117, 117, 1));
+    color: rgba(117, 117, 117, 1) !important;
+    color: var(--md-theme-default-text-primary-on-accent, rgba(117, 117, 117, 1)) !important;
+}
+
 .md-tabs.md-theme-default.md-primary .md-tabs-navigation{
     background-color: rgba(136, 176, 75, 0.5)
     !important;
@@ -99,7 +120,7 @@ input{
 }
 
 .background-init{
-    background-image: url("./images/vinyl_turntable_records_headphones_107378_1920x1080.jpg");
+    background-image: url("./images/photo-1491848128688-e0c30289e89f.jfif");
     /*opacity: 0.5;*/
     background-repeat: no-repeat;
     background-size: cover;
@@ -107,6 +128,25 @@ input{
     height: 60vh;
     margin-bottom: 24px;
 }
+
+
+.badge {
+    width: 19px;
+    height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgb(128, 158, 84,1);
+    border-radius: 100%;
+    color: #fff;
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: -.05em;
+  }
+
 .main-raised{
     margin-top: -60vh;
     margin-right: 30px;

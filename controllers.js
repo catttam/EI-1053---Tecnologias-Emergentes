@@ -26,16 +26,8 @@ const STREAM = new SSE()
 exports.eventStream = (req, res) => {
   console.log('Nueva conexion SSE ...')
   STREAM.init(req, res)
-  STREAM.send('Registrate no seas ratón','logged')
-  console.log(STREAM.eventNames)  
-
 }
 
-exports.sendEventStream = () =>{
-	console.log('enviando datillos')
-	STREAM.send("logged", "Registrate no seas ratón")
-	//STREAM.send("Registrate no seas ratón")
-}
 
 
 
@@ -66,5 +58,5 @@ exports.deleteClient =	async (req,res) => res.send({result: await model.removeCl
 //SHEETS
 
 exports.getSheet	=	async (req,res) => res.send({result: await model.getSheet(req.params.sheet_id)})
-exports.createNew	=	async (req,res) => res.send({result: await model.insertSheet(req.body)})
+exports.createNew	=	async (req,res) => {res.send({result: await model.insertSheet(req.body, STREAM)})} 
 exports.getAllSheet =	async (req,res) => res.send({result: await model.getAllSheets()})
