@@ -48,6 +48,13 @@
                   
                   <label for="client_id" class="s-label">USER ID</label>
                   <b-form-input id="client_id" class="mt-2 s-round-input" v-model="client_id"></b-form-input>
+                  <template v-if="!client_id">
+                      <b-table
+                      :fields="fields"
+                      :items="items"
+                      >
+                      </b-table>
+                  </template>
         
                   <b-button type="reset" pill class="s-button mt-4" @click="getClient">Get data</b-button>
                 </b-form>
@@ -61,7 +68,7 @@
                     <b-form-input id="name" class="mt-2 s-round-input" v-model="name"></b-form-input>
 
                     <label for="password" class="s-label">PASSWORD</label>
-                    <b-form-input id="passwd" class="mt-2 s-round-input" v-model="passwd"></b-form-input>
+                    <b-form-input id="passwd" class="mt-2 s-round-input" type="password" v-model="passwd"></b-form-input>
 
                     <label for="email" class="s-label">E-MAIL</label>
                     <b-form-input id="email" class="mt-2 s-round-input" v-model="email"></b-form-input>
@@ -73,7 +80,7 @@
                     <b-form-file id="profileImg" class="mt-2" v-model="profileImg" size="sm"></b-form-file>
       
 <!--                   <md-button type="reset" class="md-primary md-round " @click="createClient">Send</md-button>
- -->                  <b-button type="reset" pill class="s-button mt-4" @click="createClient">Send</b-button>
+ -->                  <b-button pill class="s-button mt-4" @click="createClient">Send</b-button>
 
                 </b-form>
                 </div>
@@ -141,25 +148,50 @@
                     
                     <md-switch v-model="public" class="mt-3">Your sheet is public, switch to make private</md-switch><br>
 <!--                   <md-button type="reset" class="md-primary md-round " @click="createClient">Send</md-button>
- -->                  <b-button type="submit" pill class="s-button mt-3" @click="insertSheet">Send</b-button>
+ -->                  <b-button pill class="s-button mt-3" @click="insertSheet">Send</b-button>
 
                 </b-form>
                 </div>
               </md-tab>
               <md-tab md-label="Notifications">
-                <div class="main-raised main">
-                </div>
+                  <div class="main-raised main">
+                    <div class="container s-section">
+                      <div v-if="newSheet">
+                      <b-card
+                        title="Happy cat"
+                        img-src="images/happy_cat.jpg"
+                        img-alt="Image"
+                        img-top
+                        tag="sheet"
+                        style="max-width: 20rem"
+                        class="mb-2 mx-auto s-card"
+                      >
+                        <b-card-text>
+                        Some quick example text to build on the card title and make up the bulk of the card's content.
+                        </b-card-text>
+                      </b-card>
+                      </div>
+                      <div v-else>
+                        <h3 style="margin:auto; text-align: center;">No hay notificaciones</h3>
+                      </div>
+                    </div>
+                  </div>
               </md-tab>
-            </md-tabs>
-            <div class="badge">
-            <!--   <i class="far fa-bell"></i> -->
-              <p style="margin:auto;">{{newSheet}}</p>
+            
+            <div v-if="newSheet">
+              <div class="badge">
+                <i class="far fa-bell"></i>
+              </div>
             </div>
+
+			</md-tabs>
           </div>
-        </div>
+		
+ 
       </div>
     </div>
     </div>
+	</div>
   
     <!-- Start running your app -->
     <script src="./scripts.js" async defer></script>

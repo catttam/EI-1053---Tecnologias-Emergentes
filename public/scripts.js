@@ -23,6 +23,8 @@ window.app  = new Vue({
       genres: [],
       instruments: [],
       newSheet: false,
+      fields: [],
+      items: [],
 
     },
 
@@ -40,17 +42,22 @@ window.app  = new Vue({
         stream.addEventListener('new-sheet', event => {
         var sheetData = JSON.parse(JSON.parse(event.data))
         self.newSheet = true
-        window.alert(self.newSheet)
         console.log(self.newSheet)
       }, false); 
 
+    },     
+    
+    data() {
+      return {
+        fields: ['ID', 'USERNAME', 'EMAIL',"BIRTHDAY", "SUBSCRIPTIONS"],
+        items: [
+          { ID: this.client_data.id, USERNAME: this.client_data.name, 
+            EMAIL: this.client_data.mail, BIRTHDAY: this.client_data.birthday, 
+            SUBSCRIPTIONS: this.client_data.subscriptions.length},  
+        ]
+      }
     },
 
-    computed:{
-        alertClientNull(){
-          return this.client_data
-        }
-    },
     methods:{
       createClient(formData){
         console.log('create client function uwu');
