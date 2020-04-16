@@ -1,5 +1,5 @@
 var _ = require('lodash');
-
+var db = require('./database')
 //User   {id: Number, name: String , passwd: String}
 //Blog   {id: Number, name: String , creatorID: Number}
 //Post   {id: Number, text: String,  authorID: Number}
@@ -17,7 +17,7 @@ let merch =  {}
 //----------- CLIENTS --------------
 
 // TODO Cambiar a nuestro JSON y añadir seguridad
-exports.createClient = data => { 
+exports.createClient = async (data) => { 
 	//check if data is valid
 	let matches = Object.keys(clients).some(id => clients[id].name == data.name)
 
@@ -25,6 +25,7 @@ exports.createClient = data => {
 		return 'KO'
 	else
 		clients[data.id] = data
+		await db.insertClient(data)
 		console.log('Info model::', clients[data.id])
 	return 'OK'
 
@@ -86,6 +87,23 @@ exports.removeArtist = (artistId) => {
 //----------- SHEETS --------------
 */
 exports.insertSheet = (sheetData, stream) => { 
+	//check if data is valid
+	if (!sheetData.id || !sheetData.name || !sheetData.author){
+		console.log("FAIL")
+		return 'KO'
+	} else {
+		console.log(sheetData)
+		stream.send(JSON.stringify(sheetData),"new-sheet")
+		sheets[sheetData.id] = sheetData
+	}
+	
+	return 'OK'
+
+}
+
+exports.getSheet = id => sheets[id] || null;
+
+exports.getAllSheets = () => Object.korts.insertSheet = (sheetData, stream) => { 
 	//check if data is valid
 	if (!sheetData.id || !sheetData.name || !sheetData.author){
 		console.log("FAIL")
