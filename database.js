@@ -23,6 +23,11 @@ exports.insertClient = (data) => {
     data.save()
 }
 
+exports.getClient = (id) =>{
+   return client.findOne({identifier : id})
+}
+
+
 /* var data_prueba = new clientModel({
     "@id": "http://syncsschema.com/user/1",
     "@type": "Person",
