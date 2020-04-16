@@ -1,6 +1,5 @@
 exports.client = {
     "@id": String,
-    "@type": String,
     identifier: Number,
     birthDate : Date,
     email : String,
@@ -12,7 +11,6 @@ exports.client = {
 
 exports.artist = {
     "@id": String,
-    "@type": String,
     identifier: Number,
     email : String,
     name : String,
@@ -22,7 +20,6 @@ exports.artist = {
 
 exports.sheet = {
     "@id": String,
-    "@type": String,
     identifier: Number,
     name : String,
     genre : [String],
@@ -38,7 +35,6 @@ exports.sheet = {
 
 exports.subscriptions = {
     "@id": String,
-    "@type": String,
     identifier: Number,
     "syncs:artistId" : String,
     "syncs:clientId" : String,
@@ -49,7 +45,6 @@ exports.subscriptions = {
 
 exports.merchandising = {
     "@id": String,
-    "@type": String,
     identifier: Number,
     category: [String],
     name : String,

@@ -5,6 +5,7 @@ var db = require('./database')
 //Post   {id: Number, text: String,  authorID: Number}
 //Posts  {'blogID':{'postID1': .., 'postID2': ...}}
 
+var context = "http://schema.org/"
 let clients = {}
 let artists = {}
 let subscriptions = {}
@@ -41,8 +42,15 @@ exports.updateClientData = data => {
 	return 'KO'
 }
 							  
-exports.getClientData = id => clients[id] || null
+exports.getClientData = async (id) => {
+	let finalData = null
 
+	return finalData = await db.getClient(id).then(client => {
+		client["@context"]= context
+		client["@type"] = "Person"
+	})
+
+}
 exports.removeClient = (clientId) => {
 	if(delete clients[clientId]) return 'OK'
 	return 'KO'
