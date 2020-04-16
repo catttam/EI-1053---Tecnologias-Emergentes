@@ -23,8 +23,8 @@ exports.insertClient = (data) => {
     data.save()
 }
 
-exports.getClient = (id) =>{
-   return client.findOne({identifier : id})
+exports.getClient = async (id) =>{
+   return clientModel.findOne({identifier : id})
 }
 
 

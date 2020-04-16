@@ -43,13 +43,11 @@ exports.updateClientData = data => {
 }
 							  
 exports.getClientData = async (id) => {
-	let finalData = null
-
 	return finalData = await db.getClient(id).then(client => {
-		client["@context"]= context
-		client["@type"] = "Person"
-	})
-
+		client["@context"]= context;
+		client["@type"] = "Person";
+		return client
+	}).catch(error => {return null})
 }
 exports.removeClient = (clientId) => {
 	if(delete clients[clientId]) return 'OK'
