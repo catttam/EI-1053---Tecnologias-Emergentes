@@ -11,8 +11,6 @@ var sheetModel = mng.model('sheet', new mng.Schema(sc.sheet))
 exports.insertClient = (data) => {
     //data = JSON.parse(data)
     var data = new clientModel({
-        "@id": "http://syncsschema.com/user/"+data.id,
-        "@type": "Person",
         identifier: data.id,
         birthDate : data.birthday,
         email : data.email,
@@ -26,7 +24,7 @@ exports.insertClient = (data) => {
 
 exports.insertSheet = (data) => {
 
-    var data = new clientModel({
+    var data = new sheetModel({
         identifier: data.id,
         name : data.name,
         genre : data.genres ,

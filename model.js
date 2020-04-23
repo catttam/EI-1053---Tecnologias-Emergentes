@@ -108,27 +108,18 @@ exports.insertSheet = async (sheetData, stream) => {
 
 }
 
-exports.getSheet = id => sheets[id] || null;
-
-exports.getAllSheets = () => Object.korts.insertSheet = (sheetData, stream) => { 
-	//check if data is valid
-	if (!sheetData.id || !sheetData.name || !sheetData.author){
-		console.log("FAIL")
-		return 'KO'
-	} else {
-		console.log(sheetData)
-		stream.send(JSON.stringify(sheetData),"new-sheet")
-		sheets[sheetData.id] = sheetData
-	}
-	
-	return 'OK'
-
+exports.getSheet = async (id) => {
+	return finalData = await db.getSheet(id).then(sheet => {
+		sheet["@context"]= [context, {"syncs": "http://syncsschema.com" }];
+		sheet["@type"] = "SheetMusic";
+		return sheet
+	}).catch(error => {return null})
 }
 
-exports.getSheet = id => sheets[id] || null;
+exports.getAllSheets = async () => {return await db.getAllSheets();}
 
-exports.getAllSheets = () => Object.keys(sheets).map(k => ({id: artists[k].id, name: artists[k].name}) )
-/*
+/* exports.getAllSheets = () => Object.keys(sheets).map(k => ({id: artists[k].id, name: artists[k].name}) )
+ *//*
 exports.updateSheetData = data => {
 	if (sheets[data.id]){
 		sheets[data.id] = Object.assign(sheets[data.id], data)
