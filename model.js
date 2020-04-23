@@ -92,13 +92,14 @@ exports.removeArtist = (artistId) => {
 
 //----------- SHEETS --------------
 */
-exports.insertSheet = (sheetData, stream) => { 
+exports.insertSheet = async (sheetData, stream) => { 
 	//check if data is valid
 	if (!sheetData.id || !sheetData.name || !sheetData.author){
 		console.log("FAIL")
 		return 'KO'
 	} else {
 		console.log(sheetData)
+		await db.insertSheet(sheetData)
 		stream.send(JSON.stringify(sheetData),"new-sheet")
 		sheets[sheetData.id] = sheetData
 	}

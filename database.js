@@ -6,6 +6,7 @@ mng.connect(atlas_connect)
 
 var clientModel = mng.model('client', new mng.Schema(sc.client))
 var artistModel = mng.model('artist', new mng.Schema(sc.artist))
+var sheetModel = mng.model('sheet', new mng.Schema(sc.sheet))
 
 exports.insertClient = (data) => {
     //data = JSON.parse(data)
@@ -23,9 +24,35 @@ exports.insertClient = (data) => {
     data.save()
 }
 
+exports.insertSheet = (data) => {
+
+    var data = new clientModel({
+        identifier: data.id,
+        name : data.name,
+        genre : data.genres ,
+        associatedMedia : data.sheet,
+        isAccessibleForFree: data.public,
+        publisher: data.source,
+        author: data.author,
+        datePublished: data.creationDate,
+        "syncs:musicalInstrument" : data.instruments
+    })
+
+    data.save()
+}
+
 exports.getClient = async (id) =>{
    return clientModel.findOne({identifier : id})
 }
+
+exports.getSheet = async (id) =>{
+    return sheetModel.findOne({identifier : id})
+ }
+ 
+ exports.getAllSheets = () =>{
+    return sheetModel.find()
+ }
+ 
 
 
 /* var data_prueba = new clientModel({
