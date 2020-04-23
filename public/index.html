@@ -43,6 +43,7 @@
           <div class="foreground-init">
           <div class="md-size-50" md-alignment="left">
             <md-tabs class="md-transparent s-solid" md-alignment="right">
+              <!--Usuario begins-->
               <md-tab md-label="Users">
                 <div class="main-raised main">
                 <b-form class="container s-section">
@@ -55,6 +56,7 @@
                 </b-form>
               </div>
               </md-tab>
+              <!--Registro de usuario-->
               <md-tab md-label="Register">
                 <div class="main-raised main">
                   <b-form class="container s-section">  
@@ -80,74 +82,88 @@
                 </b-form>
                 </div>
               </md-tab>
+              <!--Partituras, registro / modificacion / borrado-->
               <md-tab md-label="Sheets" >
+                
                 <div class="main-raised main">
-           
-                  <b-form class="container s-section">  
+                  <div class="container s-section" style="padding-top: 20px  !important;">
+                  <b-tabs content-class="mt-3">
+                    
+                    <b-tab title="Añadir" active>
+                      <b-form class="container s-section-tab">  
                    
-                    <label for="sheetName" class="s-label">SHEET NAME</label>
-                    <b-form-input id="sheetName" class="mt-2 s-round-input" v-model="sheetName"></b-form-input>
-
-                    <label for="sheetAuthor" class="s-label">SHEET AUTHOR</label>
-                    <b-form-input id="sheetAuthor" class="mt-2 s-round-input" v-model="sheetAuthor"></b-form-input>
-
-                    <label for="sheetSource" class="s-label">USERNAME</label>
-                    <b-form-input id="sheetSource" class="mt-2 s-round-input" v-model="sheetSource"></b-form-input>
-
-                    <label for="sheet" class="s-label">SHEET FILE</label>
-                    <b-form-file id="sheet" class="mt-2" v-model="sheet" size="sm"></b-form-file>
-                    
-                    <label class="s-label mt-3">INSTRUMENTS</label>
-                    <div class="mt-2">
-                      <b-row class="justify-content-md-center">
-  
-                        <b-col sm="3">
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Piano">Piano</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Guitarra">Guitarra</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Violonchelo">Violonchelo</md-checkbox></b-row>
-                        </b-col>
-                        <b-col sm="3">
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Xilofono">Xilofono</md-checkbox></b-row>                          
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Bandurria">Bandurria</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Bajo">Bajo</md-checkbox></b-row>
-                        </b-col>
-                        <b-col sm="3">
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Flauta">Flauta</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Bombardino">Bombardino</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="instruments" class="my-2" value="Trompeta">Trompeta</md-checkbox></b-row>
-                        </b-col>
-                      </b-row>
-                      
-                    </div>
-
-                    <label class="s-label mt-3">GENRES</label>
-                    <div class="mt-2">
-                      <b-row class="justify-content-md-center">
-                        <b-col sm="3">
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Rock">Rock</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Classic">Classic</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="R&B">R&B</md-checkbox></b-row>
-                        </b-col>
-                        <b-col sm="3">
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Pop">Pop</md-checkbox></b-row>                          
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Metal">Metal</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Jazz">Jazz</md-checkbox></b-row>
-                        </b-col>
-                        <b-col sm="3">
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Country">Country</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="House">House</md-checkbox></b-row>
-                          <b-row><md-checkbox v-model="genres" class="my-2" value="Reggae">Reggae</md-checkbox></b-row>
-                        </b-col>
-                      </b-row>
-                    </div>
-                    
-                    <md-switch v-model="public" class="mt-3">Your sheet is public, switch to make private</md-switch><br>
-<!--                   <md-button type="reset" class="md-primary md-round " @click="createClient">Send</md-button>
- -->                  <b-button pill class="s-button mt-3" @click="insertSheet">Send</b-button>
-
-                </b-form>
+                        <label for="sheetName" class="s-label">SHEET NAME</label>
+                        <b-form-input id="sheetName" class="mt-2 s-round-input" v-model="sheetName"></b-form-input>
+    
+                        <label for="sheetAuthor" class="s-label">SHEET AUTHOR</label>
+                        <b-form-input id="sheetAuthor" class="mt-2 s-round-input" v-model="sheetAuthor"></b-form-input>
+    
+                        <label for="sheetSource" class="s-label">USERNAME</label>
+                        <b-form-input id="sheetSource" class="mt-2 s-round-input" v-model="sheetSource"></b-form-input>
+    
+                        <label for="sheet" class="s-label">SHEET FILE</label>
+                        <b-form-file id="sheet" class="mt-2" v-model="sheet" size="sm"></b-form-file>
+                        
+                        <label class="s-label mt-3">INSTRUMENTS</label>
+                        <div class="mt-2">
+                          <b-row class="justify-content-md-center">
+      
+                            <b-col sm="3">
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Piano">Piano</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Guitarra">Guitarra</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Violonchelo">Violonchelo</md-checkbox></b-row>
+                            </b-col>
+                            <b-col sm="3">
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Xilofono">Xilofono</md-checkbox></b-row>                          
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Bandurria">Bandurria</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Bajo">Bajo</md-checkbox></b-row>
+                            </b-col>
+                            <b-col sm="3">
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Flauta">Flauta</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Bombardino">Bombardino</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="instruments" class="my-2" value="Trompeta">Trompeta</md-checkbox></b-row>
+                            </b-col>
+                          </b-row>
+                          
+                        </div>
+    
+                        <label class="s-label mt-3">GENRES</label>
+                        <div class="mt-2">
+                          <b-row class="justify-content-md-center">
+                            <b-col sm="3">
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Rock">Rock</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Classic">Classic</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="R&B">R&B</md-checkbox></b-row>
+                            </b-col>
+                            <b-col sm="3">
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Pop">Pop</md-checkbox></b-row>                          
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Metal">Metal</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Jazz">Jazz</md-checkbox></b-row>
+                            </b-col>
+                            <b-col sm="3">
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Country">Country</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="House">House</md-checkbox></b-row>
+                              <b-row><md-checkbox v-model="genres" class="my-2" value="Reggae">Reggae</md-checkbox></b-row>
+                            </b-col>
+                          </b-row>
+                        </div>
+                        
+                        <md-switch v-model="public" class="mt-3">Your sheet is public, switch to make private</md-switch><br>
+    <!--                   <md-button type="reset" class="md-primary md-round " @click="createClient">Send</md-button>
+     -->                  <b-button pill class="s-button mt-3" @click="insertSheet">Send</b-button>
+    
+                    </b-form>
+                    </b-tab>
+                    <b-tab title="Ver partituras" >
+                      <p class="container s-section-tab">Mostrar partituras</p>
+                    </b-tab>
+                  </b-tabs>
+                </div>
+                  <!--Partituras registro-->
+                  
                 </div>
               </md-tab>
+              <!--Notificaciones pushhhh-->
               <md-tab md-label="Notifications">
                   <div class="main-raised main">
                     <div class="container s-section">

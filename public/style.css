@@ -89,6 +89,11 @@ input{
     padding: 70px 0;
     display: block;
 }
+
+.s-section-tab{
+    padding: 20px 0;
+    display: block;
+}
 .s-nav-tabs{
     display: flex;
     flex-wrap: wrap;
