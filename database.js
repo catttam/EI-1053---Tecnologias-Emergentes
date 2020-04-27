@@ -4,13 +4,14 @@ const atlas_connect = "mongodb+srv://admin:adminsyncs42@cluster-syncs-2tbq0.mong
 
 mng.connect(atlas_connect)
 
-var clientModel = mng.model('client', new mng.Schema(sc.client))
-var artistModel = mng.model('artist', new mng.Schema(sc.artist))
-var sheetModel = mng.model('sheet', new mng.Schema(sc.sheet))
+var clientModel = mng.model('client', new mng.Schema(sc.client), "clients")
+var artistModel = mng.model('artist', new mng.Schema(sc.artist), "artists")
+var sheetModel = mng.model('sheet', new mng.Schema(sc.sheet), "sheet")
 
 exports.insertClient = (data) => {
     //data = JSON.parse(data)
     var data = new clientModel({
+        "@id" : "http://syncsschema.com/user/" + data.id,
         identifier: data.id,
         birthDate : data.birthday,
         email : data.email,
@@ -18,17 +19,18 @@ exports.insertClient = (data) => {
         accessCode : data.passwd,
         image : data.profileImg
     })
-
+    console.log(data)
     data.save()
 }
 
 exports.insertSheet = (data) => {
 
-    var data = new sheetModel({
+    var dataSheet = new sheetModel({
+        "@id" : "http://syncsschema.com/sheet/" + data.id,
         identifier: data.id,
         name : data.name,
         genre : data.genres ,
-        associatedMedia : data.sheet,
+        associatedMedia : data.sheet, 
         isAccessibleForFree: data.public,
         publisher: data.source,
         author: data.author,
@@ -36,7 +38,8 @@ exports.insertSheet = (data) => {
         "syncs:musicalInstrument" : data.instruments
     })
 
-    data.save()
+    console.log(dataSheet)
+    dataSheet.save().then(console.log("añadido")).catch(err => {console.error(err)})
 }
 
 exports.getClient = async (id) =>{
@@ -48,7 +51,8 @@ exports.getSheet = async (id) =>{
  }
  
  exports.getAllSheets = () =>{
-    return sheetModel.find()
+    console.log("buscando")
+    return sheetModel.find({})
  }
  
 

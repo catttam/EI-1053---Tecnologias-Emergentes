@@ -25,12 +25,14 @@ window.app  = new Vue({
       newSheet: false,
       fields: [],
       items: [],
+      sheet_data:[],
 
     },
 
     created(){
       var self = this
       var stream = new EventSource('/spam');
+
       
      /*  console.log("Event source created")
       stream.onmessage = function(event){
@@ -113,6 +115,31 @@ window.app  = new Vue({
                         console.log('Sheet added:: ',j.result)
                       });        
         },
+
+
+        getSheet(){
+          let url= '/sheet/' + this.client_id
+          let self = this
+          console.log(url)
+          fetch(url)  
+          .then(function(r){
+              return r.json()
+          }).then(function(j){
+              console.log(j.result)
+              self.sheet_data.push(j.result);
+          });
+        },
+
+
+      getAllSheet(){
+        fetch('/sheet/all')  
+        .then(function(j){
+            console.log(j)
+        });
+
+      }
+
+
     },
   });
   

@@ -154,9 +154,23 @@
     
                     </b-form>
                     </b-tab>
-                    <b-tab title="Ver partituras" >
-                      <p class="container s-section-tab">Mostrar partituras</p>
+                    <b-tab title="Ver partituras">
+
+                      <label for="sheet_id" class="s-label">SHEET ID</label>
+                      <b-form-input id="sheet_id" class="mt-2 s-round-input" v-model="client_id"></b-form-input>
+                      <b-button type="reset" pill class="s-button mt-4" @click="getSheet">Get data</b-button>
+
+
+                      <h3>{{sheet_data}}</h3>
+
                     </b-tab>
+
+                    <b-tab title="Todas las partituras" @click="getAllSheet">
+
+                      No funciona
+
+                    </b-tab>
+
                   </b-tabs>
                 </div>
                   <!--Partituras registro-->

@@ -26,6 +26,7 @@ exports.createClient = async (data) => {
 		return 'KO'
 	else
 		clients[data.id] = data
+		console.log(data)
 		await db.insertClient(data)
 		console.log('Info model::', clients[data.id])
 	return 'OK'
@@ -116,7 +117,9 @@ exports.getSheet = async (id) => {
 	}).catch(error => {return null})
 }
 
-exports.getAllSheets = async () => {return await db.getAllSheets();}
+exports.getAllSheets = async () => {
+	return await db.getAllSheets()
+}
 
 /* exports.getAllSheets = () => Object.keys(sheets).map(k => ({id: artists[k].id, name: artists[k].name}) )
  *//*

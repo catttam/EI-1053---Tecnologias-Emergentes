@@ -28,8 +28,7 @@ exports.sheet = {
     publisher: String,
     author: String,
     datePublished: Date,
-    genre : [String],
-    "syncs:musicalInstrument" : [String]
+
 
 }
 
