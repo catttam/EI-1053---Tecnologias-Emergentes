@@ -26,6 +26,7 @@ window.app  = new Vue({
       fields: [],
       items: [],
       sheet_data:[],
+      allSheetData: [],
 
     },
 
@@ -116,7 +117,6 @@ window.app  = new Vue({
                       });        
         },
 
-
         getSheet(){
           let url= '/sheet/' + this.client_id
           let self = this
@@ -132,10 +132,14 @@ window.app  = new Vue({
 
 
       getAllSheet(){
+        console.log("getting all sheets")
         fetch('/sheet/all')  
-        .then(function(j){
-            console.log(j)
-        });
+        .then(function(r){
+              return r.json()
+          }).then(function(j){
+              console.log(j.result)
+              self.allSheetData.push(j.result);
+          });
 
       }
 

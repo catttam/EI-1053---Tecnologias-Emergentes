@@ -118,6 +118,7 @@ exports.getSheet = async (id) => {
 }
 
 exports.getAllSheets = async () => {
+	console.log("model")
 	return await db.getAllSheets()
 }
 

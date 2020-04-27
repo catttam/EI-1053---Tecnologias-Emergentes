@@ -49,10 +49,15 @@ exports.getClient = async (id) =>{
 exports.getSheet = async (id) =>{
     return sheetModel.findOne({identifier : id})
  }
+
+exports.getSheetByName = async (name) => {
+
+}
  
- exports.getAllSheets = () =>{
+ exports.getAllSheets = async () =>{
     console.log("buscando")
-    return sheetModel.find({})
+
+    return sheetModel.find()
  }
  
 
