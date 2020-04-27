@@ -117,6 +117,14 @@ exports.getSheet = async (id) => {
 	}).catch(error => {return null})
 }
 
+exports.getSheetByName = async (name) => {
+	return finalData = await db.getSheetByName(name).then(sheet => {
+		sheet["@context"]= [context, {"syncs": "http://syncsschema.com" }];
+		sheet["@type"] = "SheetMusic";
+		return sheet
+	}).catch(error => {return null})
+}
+
 exports.getAllSheets = async () => {
 	console.log("model")
 	return await db.getAllSheets()

@@ -45,6 +45,7 @@ app.get('/user/artist/search', control.searchArtist)
 
 //---------------SHEET------------------------*/
 app.get('/sheet/all', control.getAllSheet)
+app.get('/sheet/:name', control.getSheetByName)
 app.get('/sheet/:sheet_id', control.getSheet)
 app.post('/sheet/new', control.createNew)
 //app.post('/sheet/update/:sheet_id', control.updateSheet)

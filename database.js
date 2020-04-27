@@ -51,12 +51,11 @@ exports.getSheet = async (id) =>{
  }
 
 exports.getSheetByName = async (name) => {
-
+    return sheetModel.find({name: name})
 }
  
  exports.getAllSheets = async () =>{
     console.log("buscando")
-
     return sheetModel.find()
  }
  

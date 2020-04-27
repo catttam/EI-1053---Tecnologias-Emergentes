@@ -86,6 +86,7 @@ window.app  = new Vue({
             self.client_data.push(j.result);
         });
       },
+
       insertSheet(formData){
         console.log("Sheet name =>",this.sheetName)
         console.log(this.sheet)
@@ -118,7 +119,7 @@ window.app  = new Vue({
         },
 
         getSheet(){
-          let url= '/sheet/' + this.client_id
+          let url= '/sheet/' + this.sheetName
           let self = this
           console.log(url)
           fetch(url)  
@@ -126,7 +127,7 @@ window.app  = new Vue({
               return r.json()
           }).then(function(j){
               console.log(j.result)
-              self.sheet_data.push(j.result);
+              self.sheet_data=(j.result);
           });
         },
 

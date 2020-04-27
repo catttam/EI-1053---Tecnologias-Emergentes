@@ -156,11 +156,25 @@
                     </b-tab>
                     <b-tab title="Search">
 
-                      <label for="sheet_id" class="s-label">SHEET ID</label>
-                      <b-form-input id="sheet_id" class="mt-2 s-round-input" v-model="client_id"></b-form-input>
+                      <label for="sheetName" class="s-label">Insert sheet name</label>
+                      <b-form-input id="sheetName" class="mt-2 s-round-input" v-model="sheetName"></b-form-input>
                       <b-button type="reset" pill class="s-button mt-4" @click="getSheet">Get data</b-button>
 
-                      <h3>{{sheet_data}}</h3>
+                      <div v-if="sheet_data.lenght===0">
+                        <b-card
+                          title="{{sheet_data.name}}"
+                          img-src="images/happy_cat.jpg"
+                          img-alt="Image"
+                          img-top
+                          tag="sheet"
+                          style="max-width: 20rem"
+                          class="mb-2 mx-auto s-card"
+                        >
+                          <b-card-text>
+                          Author: {{sheet_data.author}}
+                          </b-card-text>
+                        </b-card>
+                        </div>
 
                     </b-tab>
 
