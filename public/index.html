@@ -160,30 +160,9 @@
                       <b-form-input id="sheetName" class="mt-2 s-round-input" v-model="sheetName"></b-form-input>
                       <b-button type="reset" pill class="s-button mt-4" @click="getSheet">Get data</b-button>
 
-                      <div v-if="sheet_data.lenght===0">
+                      <div v-for="sheet in sheet_data">
                         <b-card
-                          title="{{sheet_data.name}}"
-                          img-src="images/happy_cat.jpg"
-                          img-alt="Image"
-                          img-top
-                          tag="sheet"
-                          style="max-width: 20rem"
-                          class="mb-2 mx-auto s-card"
-                        >
-                          <b-card-text>
-                          Author: {{sheet_data.author}}
-                          </b-card-text>
-                        </b-card>
-                        </div>
-
-                    </b-tab>
-
-                    <b-tab title="All sheets" @click="getAllSheet">
-                      
-                      <b-row v-for="sheet in allSheetData" v-bind:key="sheet.id" cols=4>
-                        <b-col>
-                          <b-card
-                          title="{{sheet.name}}"
+                          v-bind:title="sheet.name"
                           img-src="images/happy_cat.jpg"
                           img-alt="Image"
                           img-top
@@ -195,8 +174,29 @@
                           Author: {{sheet.author}}
                           </b-card-text>
                         </b-card>
+                        </div>
+
+                    </b-tab>
+
+                    <b-tab title="All sheets" @click="getAllSheet">
+                      <b-row  cols=4>
+                        <b-col v-for="item in allSheetData">
+                          <b-card 
+                          v-bind:title="item.name"
+                          img-src="images/happy_cat.jpg"
+                          img-alt="Image"
+                          img-top
+                          tag="sheet"
+                          style="max-width: 20rem"
+                          class="mb-2 mx-auto s-card"
+                        >
+                          <b-card-text>
+                          Some quick example text to build on the card title and make up the bulk of the card's content.
+                          </b-card-text>
+                        </b-card>
                         </b-col>
-                      </b-row>
+                      </b-row>   
+                      
                     </b-tab>
 
                   </b-tabs>

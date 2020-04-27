@@ -127,19 +127,20 @@ window.app  = new Vue({
               return r.json()
           }).then(function(j){
               console.log(j.result)
-              self.sheet_data=(j.result);
+              self.sheet_data=j.result;
           });
         },
 
 
       getAllSheet(){
         console.log("getting all sheets")
+        self=this
         fetch('/sheet/all')  
         .then(function(r){
               return r.json()
           }).then(function(j){
               console.log(j.result)
-              self.allSheetData.push(j.result);
+              self.allSheetData=j.result;
           });
 
       }
