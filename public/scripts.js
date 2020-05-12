@@ -120,8 +120,8 @@ window.app  = new Vue({
 
         getSheet(){
           let url= '/sheet/' + this.sheetName
-          let self = this
           console.log(url)
+          console.log("get")
           fetch(url)  
           .then(function(r){
               return r.json()

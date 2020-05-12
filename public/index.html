@@ -159,11 +159,11 @@
                       <label for="sheetName" class="s-label">Insert sheet name</label>
                       <b-form-input id="sheetName" class="mt-2 s-round-input" v-model="sheetName"></b-form-input>
                       <b-button type="reset" pill class="s-button mt-4" @click="getSheet">Get data</b-button>
-
+                      
                       <div v-for="sheet in sheet_data">
                         <b-card
                           v-bind:title="sheet.name"
-                          img-src="images/happy_cat.jpg"
+                          img-src="images/sheet.jpg"
                           img-alt="Image"
                           img-top
                           tag="sheet"
@@ -171,19 +171,20 @@
                           class="mb-2 mx-auto s-card"
                         >
                           <b-card-text>
-                          Author: {{sheet.author}}
+                            <span style="font-weight:600;">Author: </span> {{sheet.author}}
+                            <span style="font-weight:600;">Uploaded by: </span> {{sheet.publisher}}
                           </b-card-text>
                         </b-card>
-                        </div>
+                      </div>
 
                     </b-tab>
 
                     <b-tab title="All sheets" @click="getAllSheet">
-                      <b-row  cols=4>
+                      <b-row cols=4>
                         <b-col v-for="item in allSheetData">
                           <b-card 
                           v-bind:title="item.name"
-                          img-src="images/happy_cat.jpg"
+                          img-src="images/sheet.jpg"
                           img-alt="Image"
                           img-top
                           tag="sheet"
@@ -191,7 +192,10 @@
                           class="mb-2 mx-auto s-card"
                         >
                           <b-card-text>
-                          Some quick example text to build on the card title and make up the bulk of the card's content.
+                            <div>
+                              <span style="font-weight:600;">Author: </span> {{item.author}}
+                              <span style="font-weight:600;">Uploaded by: </span> {{item.publisher}}
+                            </div>
                           </b-card-text>
                         </b-card>
                         </b-col>
@@ -212,7 +216,7 @@
                       <div v-if="newSheet">
                       <b-card
                         title="Happy cat"
-                        img-src="images/happy_cat.jpg"
+                        img-src="images/sheet.jpg"
                         img-alt="Image"
                         img-top
                         tag="sheet"

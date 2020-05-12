@@ -47,7 +47,12 @@ app.get('/user/artist/search', control.searchArtist)
 app.get('/sheet/all', control.getAllSheet)
 app.get('/sheet/:name', control.getSheetByName)
 app.get('/sheet/:sheet_id', control.getSheet)
+
+
 app.post('/sheet/new', control.createNew)
+
+
+
 //app.post('/sheet/update/:sheet_id', control.updateSheet)
 //app.delete('/sheet/delete/:sheet_id', control.deleteSheet)
 
